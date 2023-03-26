@@ -1,17 +1,16 @@
-const inputEl = document.querySelector(".login-form");
+const form = document.querySelector(".login-form");
+form.addEventListener("submit", handleSubmit);
 
-const submitHandler = (event)  => {
-    event.preventDefault();
+function handleSubmit(event) {
+  event.preventDefault();
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
 
-    const {
-        elements: {email, password},
-    } = event.currentTarget;
+  if (email.value === "" || password.value === "") {
+    alert("Wszystkie pola powinny zostać wypełnione");
+  }
 
-    if (email.value === "" || password.value === "") {
-        return alert("Prosze uzupelnic wszystkie pola");
-    }
-
-    console.log(`Email: ${email.value}, Password: ${password.value}`);
-
-    event.currentTarget.reset();
+  console.log(`Email: ${email.value}, Password: ${password.value}`);
+  event.currentTarget.reset();
 }
